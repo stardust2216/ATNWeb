@@ -16,7 +16,8 @@
                 <!-- 标题 -->
                 <div class="Login-from-title-box">
                     <span class="Login-from-title-text">账号登录</span>
-                    <span class="Login-from-title-hint">使用邮箱和密码登录</span>                    
+                    <span class="Login-from-title-hint" v-if="radio2 == '密码登录'">使用邮箱和密码登录</span>                    
+                    <span class="Login-from-title-hint" v-else>使用邮箱和验证码登录</span>                    
                 </div>
 
                 <!-- 注册提示框 -->
@@ -24,6 +25,13 @@
                     <span class="SignUp-hint-text">还没有账号？</span> <a href="#" class="SignUp-a">立即注册</a>
                 </div>
 
+                <!-- 选择登录方式 -->
+                <div style="margin-top: 20px">
+                    <el-radio-group v-model="radio2">
+                        <el-radio-button label="密码登录" value="密码登录" />
+                        <el-radio-button label="验证码登录" value="验证码登录" />
+                    </el-radio-group>
+                </div>
 
                 <!-- 登录框 -->
                 <div class="Login-from-text-box">
@@ -35,10 +43,22 @@
                             <input type="email" id="email" class="Login-from-email" placeholder="请输入邮箱" v-model="users.email">
                         </div>
                        
-                        <label for="password" class="Login-from-text">密码:</label>
-                        <div class="Login-from-input-box">
-                            <input type="password" id="password" class="Login-from-password" placeholder="请输入密码" v-model="users.password">
+                        <!-- 密码登录 -->
+                        <div v-if="radio2 == '密码登录' " class="Login-passwd">  <!--  控制密码和验证码显示 -->
+                            <label for="password" class="Login-from-text">密码:</label>
+                            <div class="Login-from-input-box">
+                                <input type="password" id="password" class="Login-from-password" placeholder="请输入密码" v-model="users.password">
+                            </div>
                         </div>
+
+
+                        <div v-else class="Login-passwd">  <!--  控制密码和验证码显示 -->
+                            <label for="verificationcode" class="Login-from-text">验证码:</label>
+                            <div class="Login-from-input-box">
+                                <input type="number" id="verificationcode" class="Login-from-password" placeholder="请输入验证码" v-model="users.verification">
+                            </div>
+                        </div>
+
 
                     <a href="#" class="Login-from-forget-password">忘记密码？</a>
                     
@@ -59,17 +79,42 @@
 
 
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
+
+
+// 选项按钮样式控制
+const radio2 = ref("密码登录");
+
+
 
 let users = ref({
     email:"",
-    password:""
+    password:"",
+    verification:""
 })
 
-function getUser() {
-    console.log(users.value)
 
+// 登录按钮，发送数据并跳转
+function getUser(){
+
+    if(users.value.email == ""){
+        alert("请输入邮箱")
+    }else if(radio2.value == '密码登录' && users.value.password == ""){
+        alert("请输入密码")
+    }else if(radio2.value == '验证码登录' && users.value.verification == ""){
+        alert("请输入验证码")    
+    }else{
+        console.log(users.value)
+        // window.location.href = "/home"
+    }
 }
+
+
+
+
+
+
+
 
 
 
@@ -193,6 +238,10 @@ function getUser() {
                         margin-bottom: 2%;
                     }
 
+                    .Login-passwd{
+                        margin-top: 4%;
+                    }
+
                     .Login-from-input-box{
                         width: 100%;
                         height: 3.5vh;
@@ -248,9 +297,6 @@ function getUser() {
                 
                 }
             }
-
-
-
 
         }
     }
