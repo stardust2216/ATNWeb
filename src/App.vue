@@ -1,12 +1,11 @@
 <script setup>
-import login from './components/login.vue'
 
 
 </script>
 
 <template>
- 
- <login></login>
+    <!-- 路由的显示入口 -->
+    <router-view></router-view>
 
 
 </template>

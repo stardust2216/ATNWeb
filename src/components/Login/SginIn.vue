@@ -4,7 +4,7 @@
         <!-- 左侧卡片 -->
         <div class="Login-Tipcard-box">
             <div class="Login-Tipcard-box-text">
-                    <span class="Login-Tipcard-box-text-atn">AgriTech Nexus</span>
+                    <span class="Login-Tipcard-box-text-atn">ATN</span>
             </div>
         </div>
 
@@ -15,23 +15,15 @@
 
                 <!-- 标题 -->
                 <div class="Login-from-title-box">
-                    <span class="Login-from-title-text">账号登录</span>
-                    <span class="Login-from-title-hint" v-if="radio2 == '密码登录'">使用邮箱和密码登录</span>                    
-                    <span class="Login-from-title-hint" v-else>使用邮箱和验证码登录</span>                    
+                    <span class="Login-from-title-text">账号注册</span>
+                    <span class="Login-from-title-hint">使用邮箱注册</span>                                     
                 </div>
 
                 <!-- 注册提示框 -->
                 <div class="SignUp-hint-box">
-                    <span class="SignUp-hint-text">还没有账号？</span> <a href="#" class="SignUp-a">立即注册</a>
+                    <span class="SignUp-hint-text">已有账号？</span> <router-link to="/" class="SignUp-a">立即登录</router-link>
                 </div>
 
-                <!-- 选择登录方式 -->
-                <div style="margin-top: 20px">
-                    <el-radio-group v-model="radio2">
-                        <el-radio-button label="密码登录" value="密码登录" />
-                        <el-radio-button label="验证码登录" value="验证码登录" />
-                    </el-radio-group>
-                </div>
 
                 <!-- 登录框 -->
                 <div class="Login-from-text-box">
@@ -71,21 +63,13 @@
 
             </div>
         </div>
-
-
-
     </div>
 </template>
 
 
 <script setup>
-import { ref, watch } from 'vue';
-
-
-// 选项按钮样式控制
-const radio2 = ref("密码登录");
-
-
+import { ref } from 'vue';
+import router from '../router';
 
 let users = ref({
     email:"",
@@ -94,37 +78,9 @@ let users = ref({
 })
 
 
-// 登录按钮，发送数据并跳转
-function getUser(){
-
-    if(users.value.email == ""){
-        alert("请输入邮箱")
-    }else if(radio2.value == '密码登录' && users.value.password == ""){
-        alert("请输入密码")
-    }else if(radio2.value == '验证码登录' && users.value.verification == ""){
-        alert("请输入验证码")    
-    }else{
-        console.log(users.value)
-        // window.location.href = "/home"
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </script>
+
 
 
 <style lang="scss">
@@ -300,9 +256,6 @@ function getUser(){
 
         }
     }
-
-
-
 
 
 </style>
