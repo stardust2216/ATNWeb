@@ -1,19 +1,16 @@
-<template>
-  <firstpage></firstpage>
-</template>
+<script setup>
 
-<script>
-  
-  import firstpage from "./components/firstpage.vue"
-
-  export default{
-
-    components:{
-      firstpage
-    }
-
-  }
 
 </script>
-<style>
+
+<template>
+    <!-- 路由的显示入口 -->
+    <router-view></router-view>
+
+
+</template>
+
+<style scoped>
+
+
 </style>
