@@ -284,9 +284,7 @@ function getUser() {
                         display: flex;
                         margin-top: 2%;
 
-                        .confirmserver-input{
-                            
-                        }
+                       
 
                         .confirmserver-label{
                             margin-top: auto;
