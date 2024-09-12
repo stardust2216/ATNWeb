@@ -77,19 +77,23 @@
 
 <script setup>
 import { ref, watch } from 'vue';
-import SginIn from '../Login/SginIn.vue';
+import router from '../router';
 
 
 // 选项按钮样式控制
 const radio2 = ref("密码登录");
 
 
-
+// 暂时存储用户输入的数据
 let users = ref({
     email:"",
     password:"",
     verification:""
 })
+
+// 后端接口
+
+
 
 
 // 登录按钮，发送数据并跳转
@@ -103,25 +107,9 @@ function getUser(){
         alert("请输入验证码")    
     }else{
         console.log(users.value)
-        window.location.href = "/Interior/Home.vue"
+        router.push({path:"/datacente"})
     }
 }
-
-function goSginIn(){
-    window.location.href = "../components/SginIn.vue"
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

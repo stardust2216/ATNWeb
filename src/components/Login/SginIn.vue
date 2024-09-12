@@ -36,31 +36,33 @@
                         </div>
                        
                         <!-- 密码登录 -->
-                        <div v-if="radio2 == '密码登录' " class="Login-passwd">  <!--  控制密码和验证码显示 -->
+                        <div  class="Login-passwd">  <!--  控制密码和验证码显示 -->
                             <label for="password" class="Login-from-text">密码:</label>
                             <div class="Login-from-input-box">
                                 <input type="password" id="password" class="Login-from-password" placeholder="请输入密码" v-model="users.password">
                             </div>
                         </div>
 
-
-                        <div v-else class="Login-passwd">  <!--  控制密码和验证码显示 -->
-                            <label for="verificationcode" class="Login-from-text">验证码:</label>
+                        <div  class="Login-passwd">  <!--  控制密码和验证码显示 -->
+                            <label for="confirmpassword" class="Login-from-text">确认密码:</label>
                             <div class="Login-from-input-box">
-                                <input type="number" id="verificationcode" class="Login-from-password" placeholder="请输入验证码" v-model="users.verification">
+                                <input type="password" id="confirmpassword" class="Login-from-password" placeholder="请确认密码" v-model="users.confirmpassword">
                             </div>
                         </div>
 
 
-                    <a href="#" class="Login-from-forget-password">忘记密码？</a>
-                    
-                    <el-button type="submit"  class="Login-button"  @click="getUser" plain >登录</el-button>
+                       
+                        <!-- 服务条款 -->
+                        <div class="confirmserver-box">
+                            <input type="checkbox" id="checkBox" name="terms" value="agreed" class="confirmserver-input" v-model="users.confirmserver"  >
+                            <label for="checkBox1" class="confirmserver-label">我已同意</label>      
+                            <a href="#" class="Login-from-forget-password" >服务条款</a>
+                        </div>    
+
+                        <el-button type="submit"  class="Login-button"  @click="getUser" plain >注册</el-button>
                     
                     </form>
                 </div>
-
-
-
             </div>
         </div>
     </div>
@@ -70,13 +72,45 @@
 <script setup>
 import { ref } from 'vue';
 import router from '../router';
+import axios from 'axios';
 
+// 接收并暂时存储用户信息
 let users = ref({
     email:"",
     password:"",
-    verification:""
+    confirmpassword:"",
+    confirmserver:false
+
 })
 
+
+// 后端接口
+
+
+
+
+
+
+// 注册按钮
+function getUser() {
+    console.log(users);
+    if (users.value.password == users.value.confirmpassword) {
+        if(users.value.confirmserver){ 
+
+            // 提示框后期改进
+            alert("注册成功")
+            router.push("/")
+
+        }else{
+            alert("请勾选同意服务条款")
+        }
+    } else if(users.value.confirmpassword == '') {
+        alert("请输入确认密码")
+    }else {
+        alert("两次密码输入不一致")
+    }
+    
+}
 
 
 </script>
@@ -236,14 +270,8 @@ let users = ref({
 
                     }
 
-                    .Login-from-forget-password{
-                        text-decoration: none;
-                        color:aqua ;
-                        font-size: 14px;
-                        margin-top: 2%;
-                        margin-bottom: 1%;
-                    }
-                
+                   
+                    // 注册按钮
                     .Login-button{
                         margin-top:5% ;
                         width: 100%;
@@ -251,6 +279,36 @@ let users = ref({
                         background: #13C2C2;
                     }
                 
+                    // 服务条款
+                    .confirmserver-box{
+                        display: flex;
+                        margin-top: 2%;
+
+                        .confirmserver-input{
+                            
+                        }
+
+                        .confirmserver-label{
+                            margin-top: auto;
+                            margin-bottom: auto;
+                            font-size: 14px;
+                            color:#b8b4b4;
+                        }
+
+                        .Login-from-forget-password{
+                            text-decoration: none;
+                            color:aqua ;
+                            margin-top: auto;
+                            margin-bottom: auto;
+                            font-size: 14px;
+                            margin-left: 1%;
+                         }
+
+                    }
+
+
+
+
                 }
             }
 

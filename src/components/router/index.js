@@ -1,7 +1,9 @@
 import { createRouter,createWebHashHistory } from "vue-router";
 import SginUp from "../Login/SginUp.vue"
 import SginIn from "../Login/SginIn.vue"
-import Home from "../Interior/Home.vue"
+import DataCente from "../Interior/DataCenter.vue"
+import UserCenter from "../Interior/UserCenter.vue"
+
 
 
 const routes = [
@@ -14,9 +16,16 @@ const routes = [
         name:"SginIn",
         component:SginIn
     },{
-        path:"/home",
-        name:"Home",
-        component:Home
+        path:"/datacente",
+        name:"DataCente",
+        component:DataCente
+    },{
+        path:"/usercenter",
+        name:"UserCenter",
+        component:UserCenter,
+        meta:{
+            isLogin:true  //  设置登录拦截，如果用户未登录，则不能访问该页面
+        }
     }
 ]
 
