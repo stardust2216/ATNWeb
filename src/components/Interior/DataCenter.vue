@@ -3,9 +3,6 @@
 
     <!-- 左边导航栏 -->
     <div class="navigation-BigBox-e">
-
-  
-
         <!-- 菜单栏 -->
         <el-menu
             default-active="2"
