@@ -1,0 +1,312 @@
+.BOX{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+
+.navigation-BigBox-e{
+    width: auto;
+    height: 98vh;
+    margin-top: auto;
+    margin-left: 10px;
+    margin-bottom: auto;
+    background: none;
+
+
+    .el-menu-vertical-demo:not(.el-menu--collapse) {
+        width: 200px;
+        min-height: 98vh;
+        border-radius: 5px;
+        box-shadow: 
+        /* 右上角阴影 */
+            5px 5px 15px 0px rgba(0, 0, 0, 0.1),
+        /* 右下角阴影 */
+            -5px -5px 15px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .el-menu-vertical-demo {
+    &.el-menu--collapse {
+      height: 98vh; // 设置折叠后的高度
+      border-radius: 5px;
+      box-shadow: 
+        /* 右上角阴影 */
+            5px 5px 15px 0px rgba(0, 0, 0, 0.1),
+        /* 右下角阴影 */
+            -5px -5px 15px 0px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .el-menu-vertical-demo{
+    &.el-menu--collapse{
+        margin-top: 1%;
+
+    }
+  }
+}
+
+
+
+
+.Function-BigBox{
+    width: 96%;
+    height: 98vh;
+    margin-left: 10px;
+    
+
+    // 顶部导航
+    .Function-navigations-Box{
+        width: 100%;
+        height: 4%;
+        display: flex;
+        
+        .Function-navigation-left-box{
+            width: 50%;
+            height: 100%;
+            display: flex;
+
+            .Function-navigation-left-title{
+                width: 50%;
+                height: auto;
+                font-size: 20px;
+                margin-left: 10px;
+                margin-top: auto;
+                margin-bottom: auto;
+
+            }
+        }
+
+        .Function-navigation-right-box{
+            width: 50%;
+            display: flex;
+            justify-content: flex-end;
+
+            .Function-navigation-right-user{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                padding: 4px;
+                border-radius: 30px;
+                background-color: #f2f2f2;
+                box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, .05);
+                margin-right: 12px;
+
+                .Function-navigation-right-user-T{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-weight: 700;
+                    font-size: 16px;
+                    color: #bc3aaf;
+                    line-height: 1;
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    background-color: #fff;
+                    filter: drop-shadow(0 0 4px rgba(0, 0, 0, .08));
+                }
+
+                .Function-navigation-right-user-text{
+                    font-weight: 700;
+                    font-size: 16px;
+                    margin: 0;
+                    line-height: 1;
+                    margin-right: 10px;
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+
+    // 内容
+    .Function-centents-box{
+        width: 99%;
+        height: 95%;
+        background: hotpink;
+        margin-top: 10px;
+        margin-bottom: auto;
+        margin-left: 5px;
+        display: flex;
+        flex-direction: column;
+
+
+        // 用户信息栏
+        .userTop{
+            width: 99%;
+            height: 195px;
+            background:#FFFFFF;
+            border-radius: 10px;
+            margin-left:auto;
+            margin-right: auto;
+            margin-top: 7px;
+            box-shadow: 
+                /* 右上角阴影 */
+                5px 5px 15px 0px rgba(0, 0, 0, 0.1),
+                /* 右下角阴影 */
+                -5px -5px 15px 0px rgba(0, 0, 0, 0.1);
+
+            // 头像栏
+            .userTop-T{
+                width: 100%;
+                height: 110px;
+                display: flex;
+                justify-content: space-between; /* 元素之间的间隔平均分布 */
+                align-items: center;
+
+                .userTopLeft{
+                    width: 280px;
+                    height: 100%;
+                    display: flex;
+                    margin-left: 10px;
+
+                    .user-about-box{
+                        width: 155px;
+                        height: 100%;
+                        margin-left: 12px;
+
+                        .user-about-name{
+                            width: 100%;
+                            height: 30px;
+                            margin-top: 16px;
+                            font-size: 20px;
+                            letter-spacing: 1px
+                        }
+
+                        .user-about-role{
+                            width: 100%;
+                            height: 20px;
+                            margin-top: auto;
+                            font-size: 12px;
+                            letter-spacing: 1px
+                        }
+
+                        .user-about-number{
+                            width: 100%;
+                            height: 20px;
+                            margin-top: auto;
+                            font-size: 12px;
+                            letter-spacing: 1px
+                        }
+                    }
+                }
+
+                .userTopRight{
+                    width: 300px;
+                    height: 100%;
+                    display: flex;
+
+                    .user-address-box{
+                        width: 280px;
+                        height: 90%;
+                        background: #F3F6F8;
+                        border-radius: 10px;
+                        margin-top: auto;
+                        margin-bottom: auto;
+
+                        .user-address-top{
+                            width: 100%;
+                            height: 40px;
+                            display: flex;
+                            justify-content: space-between; /* 元素之间的间隔平均分布 */
+                            align-items: center;
+                            margin-top: 7px;
+
+                            .user-address-top-title{
+                                width: auto;
+                                height: auto;
+                                margin-left: 10px;
+                                display: flex;
+                                
+                                .user-address-top-title-test{
+                                    width: 100%;
+                                    height: 100%;
+                                    font-size: 15px;
+                                }
+                            }
+
+                            .user-address-icon{
+                                width: 20px;
+                                height: auto;
+                                margin-right: 10px;
+                            }
+
+                        }
+
+                        .user-address-about{
+                            width: 100%;
+                            height: 60px;
+                    
+                            .user-address-about-test-box{
+                                width: 94%;
+                                height: 100%;
+                                margin-left: 3%;
+                                margin-right: 3%;
+                                font-size: 13px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // 信息栏
+            .userTop-B{
+                width: 100%;
+                height: 85px;
+                display: flex;
+                justify-content: space-around;
+
+                .user-message-box{
+                    position: relative;
+                    width: 20%;
+                    height: 100%;
+                    margin-left: 1%;
+
+                    // 淡灰色虚线
+                    &::after {
+                        content: ''; /* 伪元素需要内容属性 */
+                        position: absolute;
+                        top: 50%; /* 垂直居中 */
+                        right: 0; /* 放置在盒子的右侧 */
+                        height: 50%; /* 线的长度为盒子高度的一半 */
+                        border-right: 1px solid #ccc; /* 淡灰色实线 */
+                        transform: translateY(-50%); /* 调整以确保垂直居中 */
+                    }
+
+                    .user-message-number-box{
+                        width: 100%;
+                        height: 50%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        .user-message-number{
+                            margin-top: 20px;
+                            font-size: 25px;
+                        }
+                    }
+
+                    .user-message-test-box{
+                        width: 100%;
+                        height: 50%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        .user-message-test{
+                            margin-bottom: 10px;
+                            font-size: 15px;
+                        }
+                    }
+                }
+            }
+        }
+
+        
+        // 物流信息栏
+
+
+
+    }
+}
+
+
+
+
