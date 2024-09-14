@@ -3,6 +3,7 @@ import SginUp from "../Login/SginUp.vue"
 import SginIn from "../Login/SginIn.vue"
 import DataCente from "../Interior/DataCenter.vue"
 import UserCenter from "../Interior/UserCenter.vue"
+import Mymoney from "../Interior/Mymoney.vue";
 
 
 
@@ -26,6 +27,10 @@ const routes = [
         meta:{
             isLogin:true  //  设置登录拦截，如果用户未登录，则不能访问该页面
         }
+    },{
+        path:"/mymoney",
+        name:"mymoney",
+        component:Mymoney
     }
 ]
 

@@ -322,14 +322,9 @@
                         line-height: 1;
                         margin-right: 10px;
                         margin-left: 10px;
-                        
-    
                     }
-                    
                 }
-    
             }
-    
         }
     
 
