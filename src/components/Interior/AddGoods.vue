@@ -108,45 +108,70 @@
                 
                 
 
-                
                 <div class="user-address-box">
 
                     <div class="user-address-form">
                         <el-form
-                            ref="ruleFormRef"
+                            ref="goodsRef"
                             style="max-width: 600px"
-                            :model="ruleForm"
+                            :model="goods"
                             status-icon
                             :rules="rules"
                             label-width="auto"
                             class="demo-ruleForm"
                         >
                         
-                            <el-form-item label="产品名称" prop="pass">
-                                <el-input v-model="ruleForm.pass" type="test" autocomplete="off" />
+                            <el-form-item label="产品名称" prop="name">
+                                <el-input v-model="goods.name" type="test" autocomplete="off" />
                             </el-form-item>
                             
-                            <el-form-item label="产品售价" prop="checkPass">
-                                <el-input v-model="ruleForm.checkPass" type="test" autocomplete="off"/>
-                            </el-form-item>
-                            
-                            <el-form-item label="Age" prop="age">
-                                <el-input v-model.number="ruleForm.age" />  
+                            <el-form-item label="产品售价" prop="price">
+                                <el-input v-model="goods.price" type="test" autocomplete="off"/>
                             </el-form-item>
                                 
+                            <el-form-item label="生产地" >
+                                <el-cascader
+                                :options="options"
+                                v-model="goods.address"
+                                placeholder="请选择所在地区"
+                                />
+                            </el-form-item>
+
+    
+                            <!-- 图片上传区域 -->
+
+                            <el-form-item label="产品图片" prop="img">
+                                <el-upload
+                                    class="avatar-uploader"
+                                    action="https://imgtbl.com/api/v1/images/tokens?num=1&seconds=2626560 "
+                                    :show-file-list="false"
+                                    :on-success="handleAvatarSuccess"
+                                    :before-upload="beforeAvatarUpload"
+                                >
+                                    <img v-if="imageUrl" :src="imageUrl" class="avatar" />
+                                    <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
+                                </el-upload>
+                            </el-form-item>
+
+                            <!-- 图片上传区域 -->
+
+                            <el-form-item label="产品数量" prop="num">
+                                <el-input v-model="goods.num" type="number" min="0" autocomplete="off" />
+                            </el-form-item>
+
+                            <el-form-item label="产品描述" prop="desc">
+                                <el-input v-model="goods.desc" type="textarea" autocomplete="off" />
+                            </el-form-item>
                             
-
-
-
                             <!-- 提交按钮 -->
                              <div class="user-form-button-box">
                                 <el-form-item >
                                     
-                                    <el-button type="primary" @click="submitForm(ruleFormRef)">
+                                    <el-button type="primary" @click="submitForm(goodsRef)">
                                     提交
                                     </el-button>
 
-                                    <el-button class="user-form-button" @click="resetForm(ruleFormRef)">
+                                    <el-button class="user-form-button" @click="resetForm(goodsRef)">
                                     取消
                                     </el-button>
                                     
@@ -154,25 +179,18 @@
                             </div>
                             
                         </el-form>
+                        
                     </div>
 
                 </div>
 
-                <div class="user-address-image">
-                    <div class="user-address-image-box">
-                        <img :src="logoUrl"  >
-                    </div>
-                    <span style="font-size: 20px;margin-top: 10px;">上传商品图片</span>
-                </div>
+
+
+
+
+
                 
 
-
-
-
-
-
-                   
-                
             </div>
         </div>
     </div>
@@ -180,72 +198,75 @@
     
     
     <script lang="ts" setup>
-    import logoUrl from '../static/pic10.jpg'
-    import { reactive,ref } from 'vue'
+    import logoUrl from '../static/logo_small.png'
+    import UImage from '../static/pic10.jpg'
+    import { reactive,ref, } from 'vue'
     import {
       Document,
       Menu as IconMenu,
       Location,
       Setting,
+      Plus 
     } from '@element-plus/icons-vue'
     import router from '../router';
-    import type { FormInstance, FormRules } from 'element-plus'
-    
+    import type { FormInstance, FormRules ,UploadProps } from 'element-plus'
+    import { ElMessage } from 'element-plus';
     
 // 数据区域
 
 
 
-    const ruleFormRef = ref<FormInstance>()
+// 表单区域
+    const goodsRef = ref<FormInstance>()
 
-    const checkAge = (rule: any, value: any, callback: any) => {
-    if (!value) {
-        return callback(new Error('Please input the age'))
-    }
-    setTimeout(() => {
-        if (!Number.isInteger(value)) {
-        callback(new Error('Please input digits'))
-        } else {
-        if (value < 18) {
-            callback(new Error('Age must be greater than 18'))
+    const goods = reactive({
+        name:"",
+        price:"",
+        address:"",
+        img:"",
+        num:"",
+        desc:""
+    })
+
+
+    const validatename = (rule: any, value: any, callback: any) => {
+        if (value === '') {
+            callback(new Error('请输入商品名称'))
         } else {
             callback()
         }
+    }
+
+    const validateprice = (rule: any, value: any, callback: any) => {
+        if (value === '') {
+            callback(new Error('请输入商品价格'))
+        } else {
+            callback()
         }
-    }, 1000)
     }
 
-    const validatePass = (rule: any, value: any, callback: any) => {
-    if (value === '') {
-        callback(new Error('Please input the password'))
-    } else {
-        if (ruleForm.checkPass !== '') {
-        if (!ruleFormRef.value) return
-        ruleFormRef.value.validateField('checkPass')
+    const validateaddress = (rule: any, value: any, callback: any) => {
+        if (value === '') {
+            callback(new Error('请输入商品所在地'))
+        } else {
+            callback()
         }
-        callback()
-    }
-    }
-    const validatePass2 = (rule: any, value: any, callback: any) => {
-    if (value === '') {
-        callback(new Error('Please input the password again'))
-    } else if (value !== ruleForm.pass) {
-        callback(new Error("Two inputs don't match!"))
-    } else {
-        callback()
-    }
     }
 
-    const ruleForm = reactive({
-    pass: '',
-    checkPass: '',
-    age: '',
-    })
+    const validatenum = (rule: any, value: any, callback: any) => {
+        if (value === '') {
+            callback(new Error('请输入商品数量'))
+        } else {
+            callback()
+        }
+    }
 
-    const rules = reactive<FormRules<typeof ruleForm>>({
-    pass: [{ validator: validatePass, trigger: 'blur' }],
-    checkPass: [{ validator: validatePass2, trigger: 'blur' }],
-    age: [{ validator: checkAge, trigger: 'blur' }],
+
+    const rules = reactive<FormRules<typeof goods>>({
+    name: [{ validator: validatename, trigger: 'blur' }],
+    price: [{ validator: validateprice, trigger: 'blur' }],
+    address: [{ validator: validateaddress, trigger: 'blur' }],
+    num: [{ validator: validatenum, trigger: 'blur' }],
     })
 
     const submitForm = (formEl: FormInstance | undefined) => {
@@ -253,6 +274,11 @@
     formEl.validate((valid) => {
         if (valid) {
         console.log('submit!')
+        console.log(goods)
+        ElMessage({
+            message: '提交成功',
+            type: 'success',
+        })
         } else {
         console.log('error submit!')
         }
@@ -265,7 +291,7 @@
     }
 
 
-
+// 表单区域
 
 
 
@@ -283,7 +309,7 @@
       console.log(key, keyPath)
     }
     
-    let NavigationTitle = ref('仪表盘')
+    let NavigationTitle = ref('发布订单')
     
 
 
@@ -341,9 +367,107 @@
     }
     
     
+
     
-    
-    </script>
+ const options = [
+  {
+    value: '广东省',
+    label: '广东省',
+    children: [
+      {
+        value: '广州市',
+        label: '广州市',
+        children: [
+          {
+            value: '海珠区',
+            label: '海珠区',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: '湖南省',
+    label: '湖南省',
+    children: [
+      {
+        value: '长沙市',
+        label: '长沙市',
+        children: [
+          {
+            value: '天心区',
+            label: '天心区',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: '江苏省',
+    label: '江苏省',
+    children: [
+      {
+        value: '南京市',
+        label: '南京市',
+        children: [
+          {
+            value: '鼓楼区',
+            label: '鼓楼区',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: '河北省',
+    label: '河北省',
+    children: [
+      {
+        value: '石家庄市',
+        label: '石家庄市',
+        children: [
+          {
+            value: '长安区',
+            label: '长安区',
+          },
+        ],
+      },
+    ],
+  },
+  
+]
+
+
+
+// 图片上传功能
+
+const imageUrl = ref('')
+
+const handleAvatarSuccess: UploadProps['onSuccess'] = (
+  response,
+  uploadFile
+) => {
+  imageUrl.value = URL.createObjectURL(uploadFile.raw!)
+}
+
+const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
+  if (rawFile.type !== 'image/jpeg') {
+    ElMessage.error('Avatar picture must be JPG format!')
+    return false
+  } else if (rawFile.size / 1024 / 1024 > 2) {
+    ElMessage.error('Avatar picture size can not exceed 2MB!')
+    return false
+  }
+  return true
+}
+
+
+
+
+// 图片上传功能
+
+
+</script>
     
     
 <style lang="scss" scoped>

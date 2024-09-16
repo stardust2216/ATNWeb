@@ -157,45 +157,58 @@
         }
         
 
-        .user-address-image{
-            width: 600px;
-            height: 400px;
-            display: flex;
-            flex-direction: column;
-
-            .user-address-image-box{
-               width: 300px;
-               max-width: 600px;
-               height: 300px;
-               background-color: transparent; /* 默认背景色 */
-               cursor: pointer; /* 鼠标悬停时显示指针 */
-               transition: box-shadow 0.5s, color 0.5s; /* 平滑过渡效果 */
-               margin-top: 20px;
-                
-                img{
-                    width: 100%;
-                    height: 100%
-                }
-
-            }
-
-            .user-address-image-box:hover{
-                box-shadow: 
-                /* 右上角阴影 */
-                    5px 5px 15px 0px rgba(0, 0, 0, 0.1),
-                /* 右下角阴影 */
-                    -5px -5px 15px 0px rgba(0, 0, 0, 0.1);
-                transition: box-shadow 0.5s, color 0.5s; /* 平滑过渡效果 */
-                
-            }
-        }
-        
+       
 
     }
     
 
    
 }
+
+
+
+
+.avatar-uploader .el-upload {
+    border: 1px dashed var(--el-border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: var(--el-transition-duration-fast);
+  }
+  
+  .avatar-uploader .el-upload:hover {
+    border-color: var(--el-color-primary);
+  }
+  
+  .el-icon.avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    text-align: center;
+  }
+
+  .avatar-uploader .avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
+  }
+
+  .avatar-uploader{
+    border: 1px dashed #d9d9d9;
+    border-radius: 5px;
+    transition: border-color 0.5s color 0.5s;
+    
+  }
+
+  .avatar-uploader:hover{
+    border: 1px dashed #94b6e3;
+    transition: border-color 0.5s color 0.5s;
+  }
+
+  
+  // 图片上传样式
 
 
 
