@@ -4,6 +4,10 @@ import SginIn from "../Login/SginIn.vue"
 import DataCente from "../Interior/DataCenter.vue"
 import UserCenter from "../Interior/UserCenter.vue"
 import Mymoney from "../Interior/Mymoney.vue";
+import Userupdate from "../Interior/Secondsheet/Userupdate.vue"
+import UserAddressList from "../Interior/Secondsheet/UserAddressList.vue"
+import AddGoods from "../Interior/AddGoods.vue";
+
 
 
 
@@ -31,6 +35,18 @@ const routes = [
         path:"/mymoney",
         name:"mymoney",
         component:Mymoney
+    },{
+        path:"/userupdate",
+        name:"Userupdate",
+        component:Userupdate
+    },{
+        path:"/useraddresslist",
+        name:"UserAddressList",
+        component:UserAddressList,
+    },{
+        path:"/addgoods",
+        name:"AddGoods",
+        component:AddGoods,
     }
 ]
 

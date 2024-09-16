@@ -106,143 +106,72 @@
             <!-- 中部功能区 -->
             <div class="Function-centents-box">
                 
+                
 
-                    <!-- 用户信息栏 -->
-                    <div class="userTop">
+                
+                <div class="user-address-box">
+
+                    <div class="user-address-form">
+                        <el-form
+                            ref="ruleFormRef"
+                            style="max-width: 600px"
+                            :model="ruleForm"
+                            status-icon
+                            :rules="rules"
+                            label-width="auto"
+                            class="demo-ruleForm"
+                        >
                         
-                            <div class="userTop-T">
-                                <div class="userTopLeft">
-                                    <div class="user-image-box">
-                                        <img :src="UserImage" style="width: 85px; height: 85px;border-radius: 50px; margin-top: 10px;margin-left: 10px; " alt="">
-                                    </div>
-
-                                    <div class="user-about-box">
-                                        <router-link to="/userupdate" class="user-about-name" >Stardust</router-link>
-                                        <div class="user-about-number">我的账户:stardust0019</div>
-                                        <div class="user-about-role">角色:生产商</div>
-                                    </div>    
-                                </div>
-
-                            <div class="userTopRight">
-                                
-                                <div class="user-address-box">
-                                    <div class="user-address-top">
-                                        <div class="user-address-top-title">
-                                            <span class="user-address-top-title-test">收货地址</span>
-                                        </div>
-
-                                        <div class="user-address-icon">
-                                            <el-icon size="10"><ArrowRight /></el-icon>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="user-address-about">
-                                        <div class="user-address-about-test-box">
-                                            <span class="user-address-about-test">广西壮族自治区来宾市武宣县武宣镇武宣镇 城北路西四巷8号</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-            
-
-                        <!-- 信息栏 -->
-                        <div class="userTop-B">
+                            <el-form-item label="产品名称" prop="pass">
+                                <el-input v-model="ruleForm.pass" type="test" autocomplete="off" />
+                            </el-form-item>
                             
-                            <div class="user-message-box">
-                                <div class="user-message-number-box">
-                                    <span class="user-message-number">0</span>
-                                </div>
-                                <div class="user-message-test-box">
-                                    <span class="user-message-test">待付款</span>
-                                </div>
-                            </div>
+                            <el-form-item label="产品售价" prop="checkPass">
+                                <el-input v-model="ruleForm.checkPass" type="test" autocomplete="off"/>
+                            </el-form-item>
+                            
+                            <el-form-item label="Age" prop="age">
+                                <el-input v-model.number="ruleForm.age" />  
+                            </el-form-item>
+                                
+                            
 
-                            <div class="user-message-box">
-                                <div class="user-message-number-box">
-                                    <span class="user-message-number">0</span>
-                                </div>
-                                <div class="user-message-test-box">
-                                    <span class="user-message-test">待发货</span>
-                                </div>
-                            </div>
 
-                            <div class="user-message-box">
-                                <div class="user-message-number-box">
-                                    <span class="user-message-number">0</span>
-                                </div>
-                                <div class="user-message-test-box">
-                                    <span class="user-message-test">待收货</span>
-                                </div>
-                            </div>
 
-                            <div class="user-message-box">
-                                <div class="user-message-number-box">
-                                    <span class="user-message-number">0</span>
-                                </div>
-                                <div class="user-message-test-box">
-                                    <span class="user-message-test">待评价</span>
-                                </div>
-                            </div>
+                            <!-- 提交按钮 -->
+                             <div class="user-form-button-box">
+                                <el-form-item >
+                                    
+                                    <el-button type="primary" @click="submitForm(ruleFormRef)">
+                                    提交
+                                    </el-button>
 
-                            <div class="user-message-box">
-                                <div class="user-message-number-box">
-                                    <span class="user-message-number">0</span>
-                                </div>
-                                <div class="user-message-test-box">
-                                    <span class="user-message-test">退款/售后</span>
-                                </div>
+                                    <el-button class="user-form-button" @click="resetForm(ruleFormRef)">
+                                    取消
+                                    </el-button>
+                                    
+                                </el-form-item>
                             </div>
-                        </div>
+                            
+                        </el-form>
+                    </div>
+
+                </div>
+
+                <div class="user-address-image">
+                    <div class="user-address-image-box">
+                        <img :src="logoUrl"  >
+                    </div>
+                    <span style="font-size: 20px;margin-top: 10px;">上传商品图片</span>
+                </div>
+                
+
+
+
+
+
+
                    
-                </div>
-
-
-                <!-- 物流信息栏 -->
-                <div class="user-logistics-Box">
-                    
-                    <div class="user-logistics-top">
-                        <span class="user-logistics-top-test">我的物流</span>
-                    </div>
-
-                    <div class="user-logistics-list">
-                        
-                        <div class="user-logistics-about">
-                            <img :src="UserImage" class="user-logistics-image" alt="">
-                    
-                            <div class="user-logistics-test">
-                                暂无物流
-                            </div>
-                        </div>
-                        
-                        <div class="user-confirm-button-box">
-                            <el-button type="success" plain>确认收货</el-button>
-                        </div>
-                    
-                    </div>
-
-
-                    <!-- 向下延申 -->
-                    <!-- <div class="user-logistics-list">
-                        
-                        <div class="user-logistics-about">
-                            <img :src="UserImage" class="user-logistics-image" alt="">
-                    
-                            <div class="user-logistics-test">
-                                暂无物流
-                            </div>
-                        </div>
-                        
-                        <div class="user-confirm-button-box">
-                            <el-button type="success" plain>确认收货</el-button>
-                        </div>
-                    
-                    </div> -->
-                    
-
-                </div>
                 
             </div>
         </div>
@@ -251,20 +180,98 @@
     
     
     <script lang="ts" setup>
-    import logoUrl from '../static/logo_small.png'
-    import UserImage from "../static/pic10.jpg"
-    import { ref } from 'vue'
+    import logoUrl from '../static/pic10.jpg'
+    import { reactive,ref } from 'vue'
     import {
       Document,
       Menu as IconMenu,
       Location,
       Setting,
-      Message
     } from '@element-plus/icons-vue'
-
     import router from '../router';
+    import type { FormInstance, FormRules } from 'element-plus'
     
     
+// 数据区域
+
+
+
+    const ruleFormRef = ref<FormInstance>()
+
+    const checkAge = (rule: any, value: any, callback: any) => {
+    if (!value) {
+        return callback(new Error('Please input the age'))
+    }
+    setTimeout(() => {
+        if (!Number.isInteger(value)) {
+        callback(new Error('Please input digits'))
+        } else {
+        if (value < 18) {
+            callback(new Error('Age must be greater than 18'))
+        } else {
+            callback()
+        }
+        }
+    }, 1000)
+    }
+
+    const validatePass = (rule: any, value: any, callback: any) => {
+    if (value === '') {
+        callback(new Error('Please input the password'))
+    } else {
+        if (ruleForm.checkPass !== '') {
+        if (!ruleFormRef.value) return
+        ruleFormRef.value.validateField('checkPass')
+        }
+        callback()
+    }
+    }
+    const validatePass2 = (rule: any, value: any, callback: any) => {
+    if (value === '') {
+        callback(new Error('Please input the password again'))
+    } else if (value !== ruleForm.pass) {
+        callback(new Error("Two inputs don't match!"))
+    } else {
+        callback()
+    }
+    }
+
+    const ruleForm = reactive({
+    pass: '',
+    checkPass: '',
+    age: '',
+    })
+
+    const rules = reactive<FormRules<typeof ruleForm>>({
+    pass: [{ validator: validatePass, trigger: 'blur' }],
+    checkPass: [{ validator: validatePass2, trigger: 'blur' }],
+    age: [{ validator: checkAge, trigger: 'blur' }],
+    })
+
+    const submitForm = (formEl: FormInstance | undefined) => {
+    if (!formEl) return
+    formEl.validate((valid) => {
+        if (valid) {
+        console.log('submit!')
+        } else {
+        console.log('error submit!')
+        }
+    })
+    }
+
+    const resetForm = (formEl: FormInstance | undefined) => {
+    if (!formEl) return
+    formEl.resetFields()
+    }
+
+
+
+
+
+
+
+
+
     
     // 记录是否折叠
     const isCollapse = ref(false)
@@ -278,7 +285,13 @@
     
     let NavigationTitle = ref('仪表盘')
     
+
+
+
+// 方法区域
     
+
+
     // 导航栏跳转
     function getelment( Event) {
       
@@ -327,16 +340,15 @@
         }
     }
     
-
-    function gouserupdate() {
-        router.push({path:"/userupdate"})
-    }
     
-</script>
     
-
+    
+    </script>
+    
+    
 <style lang="scss" scoped>
-   @import url("../CSS/UserCenterCSS.scss");
-
-
+@import url("../CSS/AddGoods.scss");    
+   
+    
+    
 </style>

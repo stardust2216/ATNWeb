@@ -62,7 +62,7 @@
 
                     <a href="#" class="Login-from-forget-password">忘记密码？</a>
                     
-                    <el-button type="submit"  class="Login-button"  @click="getUser" plain >登录</el-button>
+                    <el-button type="success"  class="Login-button"  @click="getUser" plain >登录</el-button>
                     
                     </form>
                 </div>
@@ -116,7 +116,7 @@ function getUser(){
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
     .BOX{
         width: 100%;
         height: 100%;
@@ -233,6 +233,7 @@ function getUser(){
 
                     .Login-from-input-box{
                         width: 100%;
+                        max-width: 500px;
                         height: 3.5vh;
                         border: #b9b9b9 1px solid;
                         border-radius: 5px;
@@ -280,8 +281,8 @@ function getUser(){
                     .Login-button{
                         margin-top:5% ;
                         width: 100%;
+                        max-width: 500px;
                         font-size: 15px;
-                        background: #13C2C2;
                     }
                 
                 }

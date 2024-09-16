@@ -123,7 +123,7 @@
     </div>
   </template>
   
-  <script lang="ts" setup>
+  <script lang="ts" setup scoped>
   import logoUrl from '@/assets/logo_small.png'
   import { ref } from 'vue'
   import {

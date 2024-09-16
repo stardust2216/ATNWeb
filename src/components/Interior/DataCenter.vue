@@ -176,6 +176,7 @@
             case 33:
                 console.log('发布订单')
                 NavigationTitle.value = '发布订单'
+                router.push({path:"/addgoods"})
                 break;
             case 4:
                 console.log('我的财务')
@@ -203,7 +204,7 @@
     </script>
     
     
-    <style lang="scss">
+    <style lang="scss" scoped>
     
     .BOX{
         width: 100%;
