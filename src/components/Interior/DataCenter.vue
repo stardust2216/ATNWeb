@@ -2,13 +2,12 @@
     <div class="BOX">
     
         <!-- 左边导航栏 -->
-        <div class="navigation-BigBox-e">
+        <div class="navigation-BigBox-a">
     
       
-    
             <!-- 菜单栏 -->
             <el-menu
-                default-active="2"
+                default-active="1"
                 class="el-menu-vertical-demo"
                 :collapse="isCollapse"
                 @open="handleOpen"
@@ -22,7 +21,7 @@
                     <span style="font-size: 20px; color: greenyellow;">ATN</span>
                  </el-menu-item>
     
-                <el-menu-item index="1"  @click="getelment(1)">
+                <el-menu-item index="1"   @click="getelment(1)">
                     <el-icon><Operation /></el-icon>
                     <template #title>仪表盘</template>
                 </el-menu-item>
@@ -71,7 +70,7 @@
     
     
         <!-- 右侧功能页 -->
-        <div class="Function-BigBox">
+        <div class="Function-BigBox-e">
     
             <!-- 顶部信息栏 -->
             <div class="Function-navigations-Box">
@@ -106,11 +105,159 @@
             <!-- 中部功能区 -->
             <div class="Function-centents-box">
                 
-                
+                <!-- 功能盒子 -->
+                <div class="goods-data-box" >
+                     
+
+                    <!--  水果区域 -->
+                    <div class="fruit-data-box">
+
+                        <!-- 标题 -->
+                        <div class="fruit-data-title">
+                            <span>水果类</span>
+                        </div>
+
+                        <!-- 内容 -->
+                        
+                        <div class="fruit-data-content">
+
+                            <!-- 模板 -->
+                            <div class="fruit-data-content-box">
+                                <div class="fruit-data-content-box-title">
+                                    <span>柑橘</span>
+                                </div>
+
+                                <div class="fruit-data-content-box-text">
+                                    <CitrusProductionData />
+                                    <CitrusPriceData />
+                                </div>
+                            </div>
+                            <!-- 模板 -->
+
+                            <div class="fruit-data-content-box">
+                                <div class="fruit-data-content-box-title">
+                                    <span>苹果</span>
+                                </div>
+
+                                <div class="fruit-data-content-box-text">
+                                    <span>价格：￥10</span>
+                                </div>
+                            </div>
+
+                            <div class="fruit-data-content-box">
+                                <div class="fruit-data-content-box-title">
+                                    <span>苹果</span>
+                                </div>
+
+                                <div class="fruit-data-content-box-text">
+                                    <span>价格：￥10</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    
+
+                    <!-- 蔬菜区域 -->
+                    <div class="fruit-data-box">
+
+                        <!-- 标题 -->
+                        <div class="fruit-data-title">
+                            <span>蔬菜类</span>
+                        </div>
+
+                        <!-- 内容 -->
+
+                        <div class="fruit-data-content">
+
+                            <!-- 模板 -->
+                            <div class="fruit-data-content-box">
+                                <div class="fruit-data-content-box-title">
+                                    <span>苹果</span>
+                                </div>
+
+                                <div class="fruit-data-content-box-text">
+                                    <span>价格：￥10</span>
+                                </div>
+                            </div>
+                            <!-- 模板 -->
+
+                            <div class="fruit-data-content-box">
+                                <div class="fruit-data-content-box-title">
+                                    <span>苹果</span>
+                                </div>
+
+                                <div class="fruit-data-content-box-text">
+                                    <span>价格：￥10</span>
+                                </div>
+                            </div>
+
+                            <div class="fruit-data-content-box">
+                                <div class="fruit-data-content-box-title">
+                                    <span>苹果</span>
+                                </div>
+
+                                <div class="fruit-data-content-box-text">
+                                    <span>价格：￥10</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
 
 
 
-                
+                    <!-- 其他区域 -->
+                    <div class="fruit-data-box">
+
+                        <!-- 标题 -->
+                        <div class="fruit-data-title">
+                            <span>其他农产品</span>
+                        </div>
+
+                        <!-- 内容 -->
+                        <div class="fruit-data-content">
+
+                            <!-- 模板 -->
+                            <div class="fruit-data-content-box">
+                                <div class="fruit-data-content-box-title">
+                                    <span>苹果</span>
+                                </div>
+
+                                <div class="fruit-data-content-box-text">
+                                    <span>价格：￥10</span>
+                                </div>
+                            </div>
+                            <!-- 模板 -->
+
+                            <div class="fruit-data-content-box">
+                                <div class="fruit-data-content-box-title">
+                                    <span>苹果</span>
+                                </div>
+
+                                <div class="fruit-data-content-box-text">
+                                    <span>价格：￥10</span>
+                                </div>
+                            </div>
+
+                            <div class="fruit-data-content-box">
+                                <div class="fruit-data-content-box-title">
+                                    <span>苹果</span>
+                                </div>
+
+                                <div class="fruit-data-content-box-text">
+                                    <span>价格：￥10</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
     
             </div>
     
@@ -121,10 +268,10 @@
     
     
     </div>
-    </template>
+</template>
     
     
-    <script lang="ts" setup>
+<script lang="ts" setup>
     import logoUrl from '../static/logo_small.png'
     import { ref } from 'vue'
     import {
@@ -134,8 +281,10 @@
       Setting,
     } from '@element-plus/icons-vue'
     import router from '../router';
-    
-    
+    import CitrusProductionData from '../LineChartData/CitrusProductionData.vue'
+    import CitrusPriceData from '../LineChartData/CitrusPriceData.vue';
+
+
     
     // 记录是否折叠
     const isCollapse = ref(false)
@@ -199,164 +348,15 @@
     }
     
     
+</script>
     
     
-    </script>
+<style lang="scss" scoped>
     
-    
-    <style lang="scss" scoped>
-    
-    .BOX{
-        width: 100%;
-        height: 100%;
-        display: flex;
-    }
-    
-    
-    .navigation-BigBox-e{
-        width: auto;
-        height: 98vh;
-        margin-top: auto;
-        margin-left: 10px;
-        margin-bottom: auto;
-        background: none;
-    
-    
-        .el-menu-vertical-demo:not(.el-menu--collapse) {
-            width: 200px;
-            min-height: 98vh;
-            border-radius: 5px;
-            box-shadow: 
-            /* 右上角阴影 */
-                5px 5px 15px 0px rgba(0, 0, 0, 0.1),
-            /* 右下角阴影 */
-                -5px -5px 15px 0px rgba(0, 0, 0, 0.1);
-    
-        }
-    
-        .el-menu-vertical-demo {
-        &.el-menu--collapse {
-          height: 98vh; // 设置折叠后的高度
-          border-radius: 5px;
-          box-shadow: 
-            /* 右上角阴影 */
-                5px 5px 15px 0px rgba(0, 0, 0, 0.1),
-            /* 右下角阴影 */
-                -5px -5px 15px 0px rgba(0, 0, 0, 0.1);
-        }
-      }
-    
-      .el-menu-vertical-demo{
-        &.el-menu--collapse{
-            margin-top: 1%;
-    
-        }
-      }
-    
-    
-    }
-    
-    
-    .Function-BigBox{
-        width: 96%;
-        height: 98vh;
-        margin-left: 10px;
-    
-        // 顶部导航
-        .Function-navigations-Box{
-            width: 100%;
-            height: 4%;
-            display: flex;
-            
-            .Function-navigation-left-box{
-                width: 50%;
-                height: 100%;
-                display: flex;
-    
-                .Function-navigation-left-title{
-                    width: 50%;
-                    height: auto;
-                    font-size: 20px;
-                    margin-left: 10px;
-                    margin-top: auto;
-                    margin-bottom: auto;
-    
-                }
-    
-            }
-    
-            .Function-navigation-right-box{
-                width: 50%;
-                display: flex;
-                justify-content: flex-end;
-    
-    
-                .Function-navigation-right-user{
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    padding: 4px;
-                    border-radius: 30px;
-                    background-color: #f2f2f2;
-                    box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, .05);
-                    margin-right: 12px;
-
-                    .Function-navigation-right-user-T{
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        font-weight: 700;
-                        font-size: 16px;
-                        color: #bc3aaf;
-                        line-height: 1;
-                        width: 30px;
-                        height: 30px;
-                        border-radius: 50%;
-                        background-color: #fff;
-                        filter: drop-shadow(0 0 4px rgba(0, 0, 0, .08));
-                    }
-    
-                    .Function-navigation-right-user-text{
-                        font-weight: 700;
-                        font-size: 16px;
-                        margin: 0;
-                        line-height: 1;
-                        margin-right: 10px;
-                        margin-left: 10px;
-                    }
-                }
-            }
-        }
-    
-
-        // 内容
-        .Function-centents-box{
-            width: 99%;
-            height: 95%;
-            background: hotpink;
-            margin-top: 10px;
-            margin-bottom: auto;
-            margin-left: 5px;
+    @import url('../CSS/DataCenter.scss');
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-        }
     
-    
-    }
-    
-    
-    
-    </style>
+
+</style>

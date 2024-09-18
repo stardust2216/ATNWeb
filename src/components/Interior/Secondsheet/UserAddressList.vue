@@ -256,6 +256,7 @@ function GoSec(event){
     function AddAddress(){
         const emptyFields = Object.keys(form).filter((key) => !form[key])
 
+        
         if(emptyFields.length){
             alert(`请输入${emptyFields.join('、')}`)
             return
@@ -264,6 +265,7 @@ function GoSec(event){
             //  后端接口 
 
 
+            console.log(form)
 
             dialogFormVisible.value = false
         }

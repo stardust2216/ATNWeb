@@ -8,7 +8,7 @@
     
             <!-- 菜单栏 -->
             <el-menu
-                default-active="2"
+                default-active="5-1"
                 class="el-menu-vertical-demo"
                 :collapse="isCollapse"
                 @open="handleOpen"
