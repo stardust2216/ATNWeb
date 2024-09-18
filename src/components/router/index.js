@@ -3,21 +3,12 @@ import SginUp from "../Login/SginUp.vue"
 import SginIn from "../Login/SginIn.vue"
 import DataCente from "../Interior/DataCenter.vue"
 import UserCenter from "../Interior/UserCenter.vue"
-<<<<<<< Updated upstream
 import Mymoney from "../Interior/Mymoney.vue";
 import Userupdate from "../Interior/Secondsheet/Userupdate.vue"
 import UserAddressList from "../Interior/Secondsheet/UserAddressList.vue"
 import AddGoods from "../Interior/AddGoods.vue"
 import myturemoney from "../Interior/myturemoney.vue";
-
-import AddGoods from "../Interior/AddGoods.vue";
 import Mymessage  from "../Interior/Mymessage.vue";
-=======
-import Mymoney from "../Interior/Mymoney.vue"
-import myturemoney from"../Interior/myturemoney.vue"
->>>>>>> Stashed changes
-
-
 
 const routes = [
     {
@@ -44,7 +35,6 @@ const routes = [
         name:"mymoney",
         component:Mymoney
     },{
-<<<<<<< Updated upstream
         path:"/userupdate",
         name:"Userupdate",
         component:Userupdate
@@ -64,13 +54,7 @@ const routes = [
         path:"/mymessage",
         name:"Mymessage",
         component:Mymessage,
-    },
-=======
-        path:"/myturemoney",
-        name:"myturemoney",
-        component:myturemoney
     }
->>>>>>> Stashed changes
 ]
 
 
