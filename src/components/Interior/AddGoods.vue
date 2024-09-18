@@ -3,9 +3,7 @@
     
         <!-- 左边导航栏 -->
         <div class="navigation-BigBox-e">
-    
-      
-    
+  
             <!-- 菜单栏 -->
             <el-menu
                 default-active="3-3"
@@ -318,9 +316,6 @@ import { Header } from 'element-plus/es/components/table-v2/src/components';
     
     let NavigationTitle = ref('发布订单')
     
-
-
-
 // 方法区域
     
 
@@ -365,6 +360,7 @@ import { Header } from 'element-plus/es/components/table-v2/src/components';
             case 52:
                 console.log('我的信息')
                 NavigationTitle.value = '我的信息'
+                router.push({path:"/mymessage"})
                 break;
             case 53:
                 console.log('商品溯源')

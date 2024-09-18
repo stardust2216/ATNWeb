@@ -4,7 +4,7 @@
       <div class="navigation-BigBox-e">
         <!-- 菜单栏 -->
         <el-menu
-          default-active="2"
+          default-active="4"
           class="el-menu-vertical-demo"
           :collapse="isCollapse"
           @open="handleOpen"

@@ -319,6 +319,7 @@
             case 52:
                 console.log('我的信息')
                 NavigationTitle.value = '我的信息'
+                router.push({path:"/mymessage"})
                 break;
             case 53:
                 console.log('商品溯源')

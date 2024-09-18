@@ -7,7 +7,7 @@ import Mymoney from "../Interior/Mymoney.vue";
 import Userupdate from "../Interior/Secondsheet/Userupdate.vue"
 import UserAddressList from "../Interior/Secondsheet/UserAddressList.vue"
 import AddGoods from "../Interior/AddGoods.vue";
-
+import Mymessage  from "../Interior/Mymessage.vue";
 
 
 
@@ -47,7 +47,11 @@ const routes = [
         path:"/addgoods",
         name:"AddGoods",
         component:AddGoods,
-    }
+    },{
+        path:"/mymessage",
+        name:"Mymessage",
+        component:Mymessage,
+    },
 ]
 
 
