@@ -3,12 +3,10 @@
     
         <!-- 左边导航栏 -->
         <div class="navigation-BigBox-e">
-    
-      
-    
+  
             <!-- 菜单栏 -->
             <el-menu
-                default-active="2"
+                default-active="3-3"
                 class="el-menu-vertical-demo"
                 :collapse="isCollapse"
                 @open="handleOpen"
@@ -143,7 +141,7 @@
                             <el-form-item label="产品图片" prop="img">
                                 <el-upload
                                     class="avatar-uploader"
-                                    action="https://imgtbl.com/api/v1/images/tokens?num=1&seconds=2626560 "
+                                    action="https://imgtbl.com/api/v1/upload"
                                     :show-file-list="false"
                                     :on-success="handleAvatarSuccess"
                                     :before-upload="beforeAvatarUpload"
@@ -174,7 +172,11 @@
                                     <el-button class="user-form-button" @click="resetForm(goodsRef)">
                                     取消
                                     </el-button>
-                                    
+
+                                    <el-button class="user-form-button" @click="demo()">
+                                    测试
+                                    </el-button>
+
                                 </el-form-item>
                             </div>
                             
@@ -211,10 +213,13 @@
     import router from '../router';
     import type { FormInstance, FormRules ,UploadProps } from 'element-plus'
     import { ElMessage } from 'element-plus';
+    import axios from 'axios';
+import { Header } from 'element-plus/es/components/table-v2/src/components';
     
 // 数据区域
 
-
+    
+    
 
 // 表单区域
     const goodsRef = ref<FormInstance>()
@@ -311,9 +316,6 @@
     
     let NavigationTitle = ref('发布订单')
     
-
-
-
 // 方法区域
     
 
@@ -358,6 +360,7 @@
             case 52:
                 console.log('我的信息')
                 NavigationTitle.value = '我的信息'
+                router.push({path:"/mymessage"})
                 break;
             case 53:
                 console.log('商品溯源')
@@ -439,32 +442,104 @@
 
 
 
-// 图片上传功能
+            // // 图片上传功能
 
-const imageUrl = ref('')
+            // const imageUrl = ref('')
 
-const handleAvatarSuccess: UploadProps['onSuccess'] = (
-  response,
-  uploadFile
-) => {
-  imageUrl.value = URL.createObjectURL(uploadFile.raw!)
-}
+            // const handleAvatarSuccess: UploadProps['onSuccess'] = (
+            // response,
+            // uploadFile
+            // ) => {
+            // imageUrl.value = URL.createObjectURL(uploadFile.raw!)
+            // }
 
-const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
+            // const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
+            // if (rawFile.type !== 'image/jpeg') {
+            //     ElMessage.error('Avatar picture must be JPG format!')
+            //     return false
+            // } else if (rawFile.size / 1024 / 1024 > 2) {
+            //     ElMessage.error('Avatar picture size can not exceed 2MB!')
+            //     return false
+            // }
+            // return true
+            // }
+
+
+
+
+            // // 图片上传功能
+
+
+            // function demo(){
+            //     addimage()
+            // }
+
+
+
+            // // 后端接口
+            // const addimage = () => {
+            //     axios.post("https://imgtbl.com/api/v1/upload",{
+            //     Header: {
+            //         'Content-Type': 'multipart/form-data',
+            //         'Authorization':'53|8AaIWi5L6BjthLha4Hz8l4WXPA6DB9crDisa4wTF',
+            //         'Accept': 'application/json'
+            //     },
+            //     data: {
+            //         "file":'../static/pic10.jpg',
+            //     }  
+            //     }).then((res) => {
+            //         console.log(res)
+            //     }).catch((err) => {
+            //         console.log(err)
+            //     }).finally()
+            // }
+
+const imageUrl = ref('');
+
+const handleAvatarSuccess = (response, uploadFile) => {
+  imageUrl.value = URL.createObjectURL(uploadFile.raw);
+};
+
+const beforeAvatarUpload = (rawFile) => {
   if (rawFile.type !== 'image/jpeg') {
-    ElMessage.error('Avatar picture must be JPG format!')
-    return false
+    ElMessage.error('产品图片必须是JPG格式!');
+    return false;
   } else if (rawFile.size / 1024 / 1024 > 2) {
-    ElMessage.error('Avatar picture size can not exceed 2MB!')
-    return false
+    ElMessage.error('产品图片大小不能超过2MB!');
+    return false;
   }
-  return true
-}
+  return true;
+};
+
+const handleChange = (file, fileList) => {
+  if (file.raw) {
+    addImage(file.raw);
+  }
+};
+
+const addImage = (file) => {
+  const formData = new FormData();
+  formData.append('file', file);
+
+  axios.post("https://imgtbl.com/api/v1/upload", formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      'Authorization': '53|8AaIWi5L6BjthLha4Hz8l4WXPA6DB9crDisa4wTF',
+      'Accept': 'application/json'
+    }
+  }).then((res) => {
+    console.log(res);
+    // 这里可以处理上传成功后的逻辑，比如更新imageUrl
+  }).catch((err) => {
+    console.log(err);
+  });
+};
 
 
 
 
-// 图片上传功能
+
+
 
 
 </script>

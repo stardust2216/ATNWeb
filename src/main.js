@@ -1,4 +1,6 @@
+import '../userbase.css'
 // import './assets/main.css'
+import './TypeScript/images.d.ts'
 
 // main.ts
 import { createApp } from 'vue'

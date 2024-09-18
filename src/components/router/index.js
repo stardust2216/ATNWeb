@@ -9,6 +9,8 @@ import UserAddressList from "../Interior/Secondsheet/UserAddressList.vue"
 import AddGoods from "../Interior/AddGoods.vue"
 import myturemoney from "../Interior/myturemoney.vue";
 
+import AddGoods from "../Interior/AddGoods.vue";
+import Mymessage  from "../Interior/Mymessage.vue";
 
 
 
@@ -52,7 +54,11 @@ const routes = [
         path:"/myturemoney",
         name:"Myturemoney",
         component:myturemoney,
-    }
+    },{
+        path:"/mymessage",
+        name:"Mymessage",
+        component:Mymessage,
+    },
 ]
 
 

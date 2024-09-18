@@ -5,24 +5,12 @@
     background: #F3F6F8;
 }
 
-body {
-    margin: 0;
-    padding: 0;
-  }
-
-  html{
-    height: 100%;
-    width: 100%;
-  }
-
 .navigation-BigBox-e{
     width: auto;
-    height: 100vh;
-    margin-top: auto;
+    height: 98vh;
+    margin-top: 10px;
     margin-left: 10px;
-    margin-bottom: auto;
     background: none;
-
 
     .el-menu-vertical-demo:not(.el-menu--collapse) {
         width: 200px;
@@ -62,8 +50,9 @@ body {
     width: 96%;
     height: 98vh;
     margin-left: 10px;
-    
-    
+    overflow-y: auto;
+    flex: 1;
+
 
     // 顶部导航
     .Function-navigations-Box{
@@ -140,10 +129,12 @@ body {
         display: flex;
         flex-direction: column;
 
+
+        
         // 用户信息栏
         .userTop{
             width: 99%;
-            height: 195px;
+            height: 205px;
             background:#FFFFFF;
             border-radius: 10px;
             margin-left:auto;
@@ -162,6 +153,7 @@ body {
                 display: flex;
                 justify-content: space-between; /* 元素之间的间隔平均分布 */
                 align-items: center;
+                margin-top: 10px;
 
                 .userTopLeft{
                     width: 280px;
